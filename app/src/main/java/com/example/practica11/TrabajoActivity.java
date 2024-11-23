@@ -11,7 +11,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class TrabajoActivity extends AppCompatActivity {
-    Almacenamiento almacenamiento = new Almacenamiento(this);
+    Almacenamiento almacenamiento;
+    TextView txtDinero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +24,16 @@ public class TrabajoActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        mostrarDinero();
+        txtDinero = findViewById(R.id.txt_Dinero);
+        almacenamiento = new Almacenamiento(this);
+        almacenamiento.mostrarDinero(txtDinero);
     }
 
     public void aplastar(View view) {
         int dinero = almacenamiento.obtenerDinero();
         dinero += 1;
         almacenamiento.guardarDinero(dinero);
-        mostrarDinero();
-    }
-
-    public void mostrarDinero() {
-        int dinero = almacenamiento.obtenerDinero();
-        TextView txtDinero = findViewById(R.id.txt_Dinero);
-        txtDinero.setText("Dinero Acumulado : " + dinero);
+        almacenamiento.mostrarDinero(txtDinero);
     }
 
     protected void onPause() {

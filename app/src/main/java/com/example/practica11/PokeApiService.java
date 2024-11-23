@@ -1,9 +1,18 @@
 package com.example.practica11;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Calendar;
 
 
 public class PokeApiService {
@@ -11,12 +20,21 @@ public class PokeApiService {
 
     public String getPokemonData(String pokemonNameOrId) throws IOException {
         String urlString = BASE_URL + "pokemon/" + pokemonNameOrId;
+
         return makeHttpRequest(urlString);
     }
 
     public String getPokemonList(int limit, int offset) throws IOException {
         String urlString = BASE_URL + "pokemon?limit=" + limit + "&offset=" + offset;
+
         return makeHttpRequest(urlString);
+    }
+
+    public String getPokemonSpriteUrl(String pokemonNameOrId) throws IOException, JSONException {
+        String jsonResult = getPokemonData(pokemonNameOrId);
+        JSONObject jsonObject = new JSONObject(jsonResult);
+
+        return jsonObject.getJSONObject("sprites").getString("front_default");
     }
 
     private String makeHttpRequest(String urlString) throws IOException {
