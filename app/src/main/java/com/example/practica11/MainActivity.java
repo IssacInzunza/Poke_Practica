@@ -35,4 +35,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrabajoActivity.class);
         startActivity(intent);
     }
+
+    public void abrirInventario(View view){
+        Intent intent = new Intent(this, InventarioActivity.class);
+        startActivity(intent);
+    }
 }

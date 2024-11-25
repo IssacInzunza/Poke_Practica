@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -234,6 +233,7 @@ public class TiendaActivity extends AppCompatActivity {
                                 if (almacenamiento.obtenerDinero() >= 100) {
                                     almacenamiento.gastarDinero(100);
                                     almacenamiento.mostrarDinero(txtDinero);
+                                    almacenamiento.guardarInventario(name);
 
                                     // Mostrar un mensaje de compra exitosa (opcional)
                                     Toast.makeText(this, "¡Has comprado a " + name + "!", Toast.LENGTH_SHORT).show();
@@ -253,5 +253,11 @@ public class TiendaActivity extends AppCompatActivity {
                 Log.e(TAG, "Error al obtener la lista de Pokémon", e);
             }
         });
+    }
+
+    protected void onPause() {
+        super.onPause();
+        int dinero = almacenamiento.obtenerDinero();
+        almacenamiento.guardarDinero(dinero);
     }
 }
