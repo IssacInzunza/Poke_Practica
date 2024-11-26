@@ -69,7 +69,6 @@ public class Fragment2 extends Fragment {
         botonSiguiente = rootView.findViewById(R.id.button3);
 
 
-        // Cambia esta línea para usar getActivity() en lugar de rootView
         navGraph = Navigation.findNavController(getActivity(), R.id.nav_graph);
 
         botonSiguiente.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +81,7 @@ public class Fragment2 extends Fragment {
 
 
 
-        // Devuelve la vista inflada
+
         return rootView;
     }
 }

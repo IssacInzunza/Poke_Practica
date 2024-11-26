@@ -54,63 +54,63 @@ public class FragmentLogin extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflar la vista
+
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
 
-        // Inicializamos los campos de entrada y botones
+
         usernameEditText = rootView.findViewById(R.id.usernameEditText);
         passwordEditText = rootView.findViewById(R.id.passwordEditText);
         botonRegistrarse = rootView.findViewById(R.id.createAccountButton);
         botonLogin = rootView.findViewById(R.id.loginButton);
 
-        // Inicializamos SharedPreferences
+
         sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
-        // Navegador de fragmentos
+
         navGraph = Navigation.findNavController(getActivity(), R.id.nav_graph);
 
-        // Configuramos el botón de inicio de sesión
+
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Obtenemos los valores de los campos
+
                 String enteredUsername = usernameEditText.getText().toString();
                 String enteredPassword = passwordEditText.getText().toString();
 
-                // Validamos las credenciales
+
                 if (validateLogin(enteredUsername, enteredPassword)) {
-                    // Si la validación es exitosa, mostramos un mensaje de éxito
+
                     //Toast.makeText(getActivity(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
-                    // Creamos un Intent para la BienvenidaActivity
+
                     Intent intent = new Intent(getActivity(), BienvenidaActivity.class);
 
-                    // Pasamos el nombre de usuario al Intent
+
                     intent.putExtra("username", enteredUsername);
 
-                    // Iniciamos la BienvenidaActivity
+
                     startActivity(intent);
 
-                    // Finalizamos la actividad de inicio de sesión para que no regrese al fragmento
+
                     getActivity().finish();
                 } else {
-                    // Si no coinciden, mostramos un mensaje de error
+
                     Toast.makeText(getActivity(), "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
-        // Configuramos el botón para crear una cuenta
+
         botonRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Navegar al fragmento de registro
+
                 navGraph.navigate(R.id.action_fragmentLogin_to_registroFragment);
             }
         });
 
-        // Devolvemos la vista inflada
+
         return rootView;
     }
 
