@@ -26,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         alarmas.scheduleMidnightMoneyAlarm(this);
     }
 
+    public void salirApp(View view) {
+        // Finaliza la actividad, cerrando la aplicación
+        finish();
+    }
+
     public void abrirTienda(View view){
         Intent intent = new Intent(this, TiendaActivity.class);
         startActivity(intent);

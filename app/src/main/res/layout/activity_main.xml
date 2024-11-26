@@ -5,61 +5,102 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/landscape"
     tools:context=".MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:gravity="center">
 
-            <TextView
-                android:id="@+id/textTitulo"
-                android:layout_width="match_parent"
+            <!-- Título del menú -->
+            <ImageView
+                android:id="@+id/imageTitulo"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Poke Menu"
-                android:textAlignment="center"
-                android:textSize="34sp" />
+                android:src="@drawable/titulomenu"/>
 
+            <!-- Fila de botones -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
 
+                <!-- Botón Tienda -->
                 <Button
                     android:id="@+id/btn_Tienda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="abrirTienda"
-                    android:text="Tienda" />
+                    android:text="Tienda"
+                    android:textSize="18sp"
+                    android:padding="16dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="abrirTienda" />
 
+                <!-- Espaciador entre los botones -->
+                <Space
+                    android:layout_width="32dp"
+                    android:layout_height="wrap_content" />
+
+                <!-- Botón Trabajo -->
                 <Button
                     android:id="@+id/btn_Trabajo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="abrirChamba"
-                    android:text="Trabajo" />
-
+                    android:text="Trabajo"
+                    android:textSize="18sp"
+                    android:padding="16dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="abrirChamba" />
             </LinearLayout>
 
+            <!-- Fila de botones inferior -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
+                <!-- Botón Inventario -->
                 <Button
                     android:id="@+id/btn_Inventario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="abrirInventario"
-                    android:text="Inventario" />
+                    android:text="Inventario"
+                    android:textSize="18sp"
+                    android:padding="16dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="abrirInventario" />
             </LinearLayout>
+
+
+            <!-- Botón de Salir -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="32dp">
+
+                <Button
+                    android:id="@+id/btn_Salir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salir"
+                    android:textSize="18sp"
+                    android:padding="16dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="salirApp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
